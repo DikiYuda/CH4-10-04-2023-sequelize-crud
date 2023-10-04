@@ -1,16 +1,16 @@
-const { Product } = require("../models");
+const { product } = require("../models/index");
 
 const createProduct = async (req, res) => {
   const { name, price, stock } = req.body;
   try {
-    const newProduct = await Product.create({
+    const newProduct = await product.create({
       name,
       price,
       stock,
     });
 
     res.status(200).json({
-      status: success,
+      status: "success",
       data: {
         newProduct,
       },
@@ -25,34 +25,34 @@ const createProduct = async (req, res) => {
 
 const findProduct = async (req, res) => {
   try {
-    const products = await Product.findAll();
+    const products = await product.findAll();
 
     res.status(200).json({
-      status: success,
+      status: "success",
       data: {
-        newProduct,
+        products,
       },
     });
   } catch (err) {
     res.status(400).json({
-      status: "Failed",
-      message: err.message,
+      status: "failed",
+      mesagge: err.message,
     });
   }
 };
 
 const findProductByid = async (req, res) => {
   try {
-    const products = await Product.findOne({
+    const products = await product.findOne({
       where: {
         id: req.params.id,
       },
     });
 
     res.status(200).json({
-      status: success,
+      status: "success",
       data: {
-        product,
+        products,
       },
     });
   } catch (err) {
@@ -66,7 +66,7 @@ const findProductByid = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { name, price, stock } = req.body;
   try {
-    const product = await Product.update(
+    const prod = await product.update(
       {
         name,
         price,
@@ -80,9 +80,9 @@ const updateProduct = async (req, res) => {
     );
 
     res.status(200).json({
-      status: success,
+      status: "success",
       data: {
-        product,
+        prod,
       },
     });
   } catch (err) {
@@ -96,16 +96,16 @@ const updateProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const { name, price, stock } = req.body;
   try {
-    const product = await Product.destroy({
+    const products = await product.destroy({
       where: {
         id: req.params.id,
       },
     });
 
     res.status(200).json({
-      status: success,
+      status: "success",
       data: {
-        product,
+        products,
       },
     });
   } catch (err) {

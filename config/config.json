@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "diki123",
-    "database": "database_fsw2",
+    "database": "database_product",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
